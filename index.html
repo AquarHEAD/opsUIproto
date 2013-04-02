@@ -22,21 +22,18 @@
             <ul class="nav">
               <li class="active"><a href="#">我的OPS</a></li>
               <li><a href="#about">预订</a></li>
-              <li><a href="#contact">购物</a></li>
+              <li><a href="#contact">通知 <span class="badge badge-inverse">5</span></a></li>
+            </ul>
+            <ul class="nav pull-right">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">其他 <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">访客, 你好!<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
+                  <li><a href="#">登录</a></li>
                   <li class="divider"></li>
-                  <li class="nav-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+                  <li><a href="#">注册</a></li>
                 </ul>
               </li>
             </ul>
-            <p class="navbar-text pull-right">访客, 你好!</p>
           </div>
         </div>
       </div>
@@ -52,29 +49,21 @@
           </div>
         </div>
         <div class="span4">
-          <form class="form-horizontal">
-            <legend>登录</legend>
-            <div class="control-group">
-              <label class="control-label" for="inputEmail">用户名</label>
-              <div class="controls">
-                <input type="text" id="inputEmail" placeholder="Email">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="inputPassword">密码</label>
-              <div class="controls">
-                <input type="password" id="inputPassword" placeholder="Password">
-              </div>
-            </div>
-            <div class="control-group">
-              <div class="controls">
-                <label class="checkbox">
-                  <input type="checkbox">保持登录状态
-                </label>
-                <button type="submit" class="btn">登录</button>
-                <a href="http://www.google.com" class="btn">点此注册</a>
-              </div>
-            </div>
+          <form>
+            <fieldset>
+              <legend>登录</legend>
+              <input type="text" placeholder="用户名">
+              <input type="password" placeholder="密码">
+              <label class="checkbox">
+                <input type="checkbox">保持登录状态
+              </label>
+              <button type="submit" class="btn">登录</button>
+            </fieldset>
+            <br>
+            <fieldset>
+              <legend>还没有帐号?</legend>
+              <a href="http://www.google.com" class="btn btn-primary">点此注册</a>
+            </fieldset>
           </form>
         </div>
       </div>
