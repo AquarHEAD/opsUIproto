@@ -5,13 +5,15 @@
   <title>Welcome | PAM.OPS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <style type="text/css">
-        body {
-          padding-top: 60px;
-          padding-bottom: 40px;
-        }
-      </style>
-      <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+  <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="app/home.css" rel="stylesheet">
+  <script src="d3/d3.v3.min.js"></script>
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,6 +27,7 @@
               <li><a href="#contact">通知 <span class="badge badge-inverse">5</span></a></li>
             </ul>
             <ul class="nav pull-right">
+              <li><a href="#">帮助</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">AquarHEAD L.<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -66,10 +69,81 @@
       <hr>
       
       <div class="row">
-        <div class="span8 offset2 well">
-          <p>近期消费走势 年/月(参考支付宝) d3.js?</p>
+        <div class="span8 offset2">
+          <div class="trendmap">
+            
+          </div>
         </div>
       </div>
+      
+      <script type="text/javascript">
+        var dataset = [2660.43, 630.76, 998.77, 2728.24, 316.95, 523.00, 286.97, 1547.14, 1131.29, 2676.57, 559.24, 698.57];
+        var months = [4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2, 3];
+        var dmax = 2728.24;
+        function calcx(pos) {
+          return (430/11)*pos+15;
+        }
+        function calcy(data) {
+          return 70-(data/dmax)*50;
+        }
+        var svg = d3.select(".trendmap")
+                    .append("svg")
+                    .attr("width", 460)
+                    .attr("height", 100)
+                    .attr("style", "overflow: hidden; position: relative;");
+        
+        var pathset = [];
+        for (var dp=0; dp<dataset.length-1; dp++) {
+          pathset.push("M"+(calcx(dp))+","+(calcy(dataset[dp]))+"L"+(calcx(dp+1))+","+(calcy(dataset[dp+1])));
+        }
+        svg.selectAll("path")
+           .data(pathset)
+           .enter()
+           .append("path")
+           .attr("style", "-webkit-tap-highlight-color: rgba(0, 0, 0, 0);")
+           .attr("fill", "none")
+           .attr("stroke", "#d8e5eb")
+           .attr("d", function(d) {
+             return d;
+           })
+           .attr("stroke-width", "4px");
+        
+        var circles = svg.selectAll("circle")
+                         .data(dataset)
+                         .enter()
+                         .append("circle")
+                         .attr("style", "-webkit-tap-highlight-color: rgba(0, 0, 0, 0); cursor: pointer;")
+                         .attr("r", 5)
+                         .attr("fill", "#ffffff")
+                         .attr("stroke", "#cee2e9")
+                         .attr("stroke-width", "2.5px");
+        circles.attr("cx", function(d, i) {
+                 return calcx(i);
+               })
+               .attr("cy", function(d) {
+                 return calcy(d);
+               });
+        svg.selectAll("text")
+           .data(months)
+           .enter()
+           .append("text")
+           .attr("style", "-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-size: 12px; line-height: normal; font-family: Arial;")
+           .attr("x", function(d,i) {
+             return calcx(i);
+           })
+           .attr("y", 87)
+           .attr("text-anchor", "middle")
+           .attr("font-size", "12px")
+           .attr("font-family", "Arial")
+           .attr("stroke", "none")
+           .attr("fill", "#cee2e9")
+           .append("tspan")
+           .attr("style", "-webkit-tap-highlight-color: rgba(0, 0, 0, 0);")
+           .attr("dy", "4.1640625")
+           .text( function(d) {
+             return d+"月"
+           });
+      </script>      
       
       <div class="row">
         <div class="span8 offset2">
