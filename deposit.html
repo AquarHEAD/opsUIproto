@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <title>Forget Password | PAM.OPS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+  <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <script src="bootstrap/js/jquery.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">PAM.OPS</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">我的OPS</a></li>
+              <li><a href="#about">预订</a></li>
+              <li><a href="#contact">通知 <span class="badge badge-inverse">5</span></a></li>
+            </ul>
+            <ul class="nav pull-right">
+              <li>访客, 你好!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+      
+      <div class="row">
+        <div class="span6 offset3">
+          <h3>账户充值</h3>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="span6 offset3">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="forgetpass">
+              <li class="active"><a href="#viaprepaidcard">充值卡</a></li>
+              <li><a href="#viacreditcard">信用卡</a></li>
+              <li><a href="#viabankcard">银行卡</a></li>
+            </ul>
+            
+            <div class="tab-content">
+              <div class="tab-pane active" id="viaprepaidcard">
+                <form action="" method="post" class="form-horizontal">
+                  <fieldset>
+                    <div class="control-group">
+                      <label class="control-label" for="inputPrepaidCardNum">充值卡号</label>
+                      <div class="controls">
+                        <input type="password" id="inputPrepaidCardNum" placeholder="Prepaid Card Number">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" for="inputPrepaidCardPass">充值卡密码</label>
+                      <div class="controls">
+                        <input type="password" id="inputPrepaidCardPass" placeholder="Prepaid Card Password">
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <div class="controls">
+                        <button type="submit" class="btn btn-primary">确认充值</button>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+              
+              <div class="tab-pane" id="viacreditcard">
+              </div>
+              
+              <div class="tab-pane" id="viacbankcard">
+              </div>
+            </div>
+            
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">回答安全问题</h3>
+              </div>
+              <form>
+                <div class="modal-body">
+                  <label>安全问题...?</label>
+                  <input name="secAnswer" type="text" placeholder="Answer">
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
+                  <button type="submit" class="btn btn-primary">提交</button>
+                </div>
+              </form>
+            </div>
+            <script>
+              // $('#myModal').modal({"show": true})
+              // 注意设置激活的tab
+            </script>
+            
+            <script>
+              $('#forgetpass a').click(function (e) {
+                e.preventDefault();
+                $(this).tab('show');
+              })
+            </script>
+          </div>
+        </div>
+      </div>
+      
+      <hr>
+      
+      <footer>
+        <p style="text-align:right;">&copy; AquarHEAD L.</p>
+      </footer>
+
+    </div>
+    
+    
+  </body>
+</html>
