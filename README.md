@@ -5,8 +5,6 @@ Prototype UI for the personal account management module of a online payment syst
 
 用户名/电子邮箱登录 用户名不能包含@
 
-密码重置token的Model
-
 ## Interface
 
 *Private* means (should) only available to other services in the system, but not end-user's clients.
@@ -53,6 +51,8 @@ Should check cookies first, if user has logined then set the `token` and redirec
 Just the logout. (maybe need rethink)
 
 ### Payment
+
+`/pay`
 
 ### User Info
 
