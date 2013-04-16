@@ -10,6 +10,15 @@
       padding-top: 60px;
       padding-bottom: 40px;
     }
+    .tooltip {
+      position: absolute;
+      text-align: center;
+      padding: 6px 8px;
+      font: 12px sans-serif;
+      background: #ffb515;
+      border-radius: 6px;
+      color: white;
+    }
   </style>
   <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
   <script src="bootstrap/js/jquery.js"></script>
@@ -154,6 +163,10 @@
              })
              .attr("stroke-width", "4px");
           
+            var tooltip = d3.select("body").append("div")   
+              .attr("class", "tooltip")               
+              .style("opacity", 0);
+
           var circles = svg.selectAll("circle")
                            .data(tmdata)
                            .enter()
@@ -162,13 +175,28 @@
                            .attr("r", 5)
                            .attr("fill", "#ffffff")
                            .attr("stroke", "#cee2e9")
-                           .attr("stroke-width", "2.5px");
-          circles.attr("cx", function(d, i) {
-                   return calcx(i);
-                 })
-                 .attr("cy", function(d) {
-                   return calcy(d, tmdmax);
-                 });
+                           .attr("stroke-width", "2.5px")
+                           .attr("cx", function(d, i) {
+                             return calcx(i);
+                           })
+                           .attr("cy", function(d) {
+                             return calcy(d, tmdmax);
+                           })
+                           .on("mouseover", function(d, i) {
+                             d3.select(this).style("stroke", "#ffb515");
+                             tooltip.transition()        
+                               .duration(200)      
+                               .style("opacity", .9);      
+                             tooltip.html(d)
+                               .style("left", d3.event.pageX + "px")     
+                               .style("top", d3.event.pageY - 30 + "px"); 
+                           })
+                           .on("mouseout", function() {
+                             d3.select(this).style("stroke", "#cee2e9");
+                             tooltip.transition()
+                               .duration(200)
+                               .style("opacity", 0);
+                           });
           svg.selectAll("text")
              .data(months)
              .enter()
