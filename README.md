@@ -3,29 +3,35 @@ opsUIproto
 
 Prototype UI for the personal account management module of a online payment system.
 
-用户名/电子邮箱登录 用户名不能包含@
+用户名/电子邮箱登录 
 
 ## Interface
+
+### Terminology
 
 *Private* means (should) only available to other services in the system, but not end-user's clients.
 
 *Public* means end-user's clients might be redirected to those API.
 
+`service_id` & `service_secret` is generated for other services "manually", for identifying who's requesting our resources.
+
 ### Authorization
 
-`/token/new?service_secret=`
+`/token/new?service_id=&service_secret=`
 
 *Private*
 
-Generate a auth token, the `service_secret` is generated for other services "manually".
+Generate a auth token.
 
 Since the end-user's client won't access this API (can even block that via local network api), it's safe to pass the secret directly in the request.
 
-`/token/info?service_secret=&token=[key]`
+Before redirect to our login UI, other services should check cookies first, and check if the token hasn't expired.
+
+`/token/info/[token_key]?service_id=&service_secret=`
 
 *Private*
 
-Get the token info specified by its `key` value.
+Get the token info specified by its `token_key` value.
 
 The token would contain these fields:
 
@@ -42,8 +48,6 @@ The token would contain these fields:
 
 A login UI, if login succeed will redirect to `redirect`, otherwise keep `token` and `redirect` and reload.
 
-Should check cookies first, if user has logined then set the `token` and redirect immediately, otherwise show the UI.
-
 `/logout`
 
 *Public*
@@ -52,7 +56,30 @@ Just the logout. (maybe need rethink)
 
 ### Payment
 
-`/pay`
+`/payment/new?service_id=&service_secret=`
+
+*Private*
+
+Create a new payment.
+
+Needed arguments:
+
+- Payment Name: some meaningful name describing the payment
+- Payment From: the other one involved in the payment
+- Detail Link(optional): a link to where user can view the details
+
+
+`/payment/info/[order_id]?service_id=&service_secret=`
+
+*Private*
+
+Mainly for checking payment status asynchronously.
+
+`/pay/[order_id]`
+
+*Public*
+
+After a payment is created, should redirect user to this UI.
 
 ### User Info
 
@@ -92,6 +119,12 @@ activity history page.
 
 ### User
 
+- username: cannot contain '@'
+- email:
+- password:
+- status:
+- join_date:
+- 
 
 ### AuthToken
 
@@ -100,3 +133,6 @@ activity history page.
 
 
 ### Activity
+
+
+### Payment
