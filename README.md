@@ -35,11 +35,6 @@ Get the token info specified by its `token_key` value.
 
 The token would contain these fields:
 
-- id: (maybe unnecessary)
-- key: the token key.
-- status: new, authed, expired, failed (or just a boolean authed?)
-- uid: if authed then set to the authed user's id
-
 ### Login
 
 `/login?token=&redirect=`
@@ -65,15 +60,17 @@ Create a new payment.
 Needed arguments:
 
 - Payment Name: some meaningful name describing the payment
-- Payment From: the other one involved in the payment
+- Payment Recipient: the other one involved in the payment
+- Money Amount: how much money to pay
+- Success Callback: callback on success
+- Failure Callback: callback on failure
 - Detail Link(optional): a link to where user can view the details
-
 
 `/payment/info/[order_id]?service_id=&service_secret=`
 
 *Private*
 
-Mainly for checking payment status asynchronously.
+For checking payment status asynchronously.
 
 `/pay/[order_id]`
 
@@ -122,16 +119,36 @@ activity history page.
 - username: cannot contain '@'
 - email:
 - password:
-- status:
+- realname:
+- id_number:
+- payment_password:
+- bind_phone: (optional)
+- sec_question: (optional)
+- sec_answer: (optional)
+- actived:
 - join_date:
 
 ### AuthToken
 
+- key:
+- status: new, authed, expired, failed (or just a boolean authed?)
+- uid: if authed then set to the authed user's id
+- login_ip: (optional)
+- login_date:
 
 ### ResetToken
 
-
-### Activity
-
+- key:
+- uid:
+- used:
+- use_date:
+- expire_date: cannot be used later than this
 
 ### Payment
+
+- payment_name:
+- recipient: to whom the payment is made
+- money_amount:
+- status:
+- created_date:
+- finished_date:
