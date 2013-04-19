@@ -124,7 +124,6 @@ activity history page.
 - password:
 - status:
 - join_date:
-- 
 
 ### AuthToken
 
