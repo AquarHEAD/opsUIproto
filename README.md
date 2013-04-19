@@ -130,8 +130,9 @@ activity history page.
 
 ### AuthToken
 
-- key:
-- status: new, authed, expired, failed (or just a boolean authed?)
+- key: a unique token
+- status: fresh, authed, expired
+- expire_date: cannot be used later than this
 - uid: if authed then set to the authed user's id
 - login_ip: (optional)
 - login_date:
@@ -142,7 +143,7 @@ activity history page.
 - uid:
 - used:
 - use_date:
-- expire_date: cannot be used later than this
+- expire_date: 
 
 ### Payment
 
