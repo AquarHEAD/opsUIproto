@@ -65,6 +65,7 @@ Needed arguments:
 - Success Callback: callback on success
 - Failure Callback: callback on failure
 - Detail Link(optional): a link to where user can view the details
+- Expire Time: how long is a payment valid
 
 `/payment/info/[order_id]?service_id=&service_secret=`
 
@@ -72,7 +73,7 @@ Needed arguments:
 
 For checking payment status asynchronously.
 
-`/pay/[order_id]`
+`/pay/[payment_token]`
 
 *Public*
 
@@ -116,6 +117,7 @@ activity history page.
 
 ### User
 
+- id:
 - username: cannot contain '@'
 - email:
 - password:
@@ -140,16 +142,17 @@ activity history page.
 ### ResetToken
 
 - key:
-- uid:
+- uid: -> user.id
 - used:
 - use_date:
 - expire_date: 
 
 ### Payment
 
+- payment_token:
 - payment_name:
 - recipient: to whom the payment is made
 - money_amount:
-- status:
+- status: pending, successed, canceled, expired
 - created_date:
 - finished_date:
