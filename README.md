@@ -153,6 +153,6 @@ activity history page.
 - payment_name:
 - recipient: to whom the payment is made
 - money_amount:
-- status: pending, successed, canceled, expired
+- status: pending, succeed, canceled, expired
 - created_date:
 - finished_date:
