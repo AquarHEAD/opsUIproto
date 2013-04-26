@@ -129,6 +129,7 @@ activity history page.
 - sec_answer: (optional)
 - actived:
 - join_date:
+- grow_points: (may need this extra info when pay for thing)
 
 ### AuthToken
 
@@ -145,12 +146,13 @@ activity history page.
 - uid: -> user.id
 - used:
 - use_date:
-- expire_date: 
+- expire_date:
 
 ### Payment
 
 - payment_token:
 - payment_name:
+- payment_type(maybe): 收款/付款?
 - recipient: to whom the payment is made
 - money_amount:
 - status: pending, succeed, canceled, expired
