@@ -117,44 +117,54 @@ activity history page.
 
 ### User
 
-- id:
-- username: cannot contain '@'
-- email:
-- password:
-- realname:
-- id_number:
-- payment_password:
-- bind_phone: (optional)
-- sec_question: (optional)
-- sec_answer: (optional)
-- actived:
-- join_date:
-- grow_points: (may need this extra info when pay for thing)
+- id: `int`
+- username: `string` cannot contain '@'
+- email: `string`
+- password: `string` encrypted with bcrypt
+- realname: `string`
+- id_number: `string`
+- payment_password: `string` encrypted with bcrypt
+- bind_phone: `string` (optional)
+- sec_question: `string` (optional)
+- sec_answer: `string` (optional)
+- actived: `boolean`
+- join_date: `datetime`
+- grow_points: `int` or `float` (may need this extra info when pay for thing)
+- balance: `float`
 
 ### AuthToken
 
-- key: a unique token
-- status: fresh, authed, expired
-- expire_date: cannot be used later than this
-- uid: if authed then set to the authed user's id
-- login_ip: (optional)
-- login_date:
+- key: `string` a unique token
+- status: `string` fresh, authed, expired
+- expire_date: `datetime` cannot be used later than this
+- uid: `foreignkey` if authed then set to the authed user's id
+- login_ip: `string` (optional)
+- login_date: `datetime`
 
 ### ResetToken
 
-- key:
-- uid: -> user.id
-- used:
-- use_date:
-- expire_date:
+- key: `string`
+- uid: `foreignkey` -> user.id
+- used: `boolean`
+- used_date: `datetime`
+- expire_date: `datetime`
 
 ### Payment
 
-- payment_token:
-- payment_name:
-- payment_type(maybe): 收款/付款?
-- recipient: to whom the payment is made
-- money_amount:
-- status: pending, succeed, canceled, expired
+- payment_token: `string`
+- payment_name: `string`
+- payment_type(maybe): `string` 收款/付款?
+- recipient: `string` to whom the payment is made
+- money_amount: `float`
+- status: `string` pending, succeed, canceled, expired
+- created_date: `datetime`
+- finished_date: `datetime`
+
+### PrepaidCard
+
+- identifier:
+- password:
+- value:
 - created_date:
-- finished_date:
+- used_date:
+- expire_date:
