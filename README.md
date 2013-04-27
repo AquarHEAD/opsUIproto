@@ -162,9 +162,9 @@ activity history page.
 
 ### PrepaidCard
 
-- identifier:
-- password:
-- value:
-- created_date:
-- used_date:
-- expire_date:
+- identifier: `string`
+- password: `string`
+- value: `float`
+- created_date: `datetime`
+- used_date: `datetime`
+- expire_date: `datetime`
