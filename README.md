@@ -168,3 +168,9 @@ activity history page.
 - created_date: `datetime`
 - used_date: `datetime`
 - expire_date: `datetime`
+
+### ServiceProvider
+
+- service_id: `string`
+- service_secret: `string`
+- service_name: `string`
